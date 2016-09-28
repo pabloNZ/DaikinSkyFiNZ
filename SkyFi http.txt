@@ -1,0 +1,124 @@
+DAIKIN SKYFI UNIT
+
+-----------------
+
+http://<ipaddress>:2000/
+
+-- POWER OFF --
+http://10.111.111.28:2000/set.cgi?pass=XXXXX&p=0
+
+-- POWER ON --
+http://10.111.111.28:2000/set.cgi?pass=XXXXX&p=1
+
+-- SET TEMPERATURE --
+
+TT <--- Value for setpoint (range here seems to be 18 – 32)
+
+/set.cgi?pass=XXXXX&t=TT
+
+-- FAN MODES --
+
+LOW
+/set.cgi?pass=XXXXX&f=1
+MED
+/set.cgi?pass=XXXXX&f=2
+HIGH
+/set.cgi?pass=XXXXX&f=3
+LOW/AUTO
+/set.cgi?pass=XXXXX&f=5
+MED/AUTO
+/set.cgi?pass=XXXXX&f=6
+HIGH/AUTO
+/set.cgi?pass=XXXXX&f=7
+
+-- HEAT/COOL MODES --
+
+AUTO
+/set.cgi?pass=XXXXX&m=1
+HEAT
+/set.cgi?pass=XXXXX&m=2
+DRY
+/set.cgi?pass=XXXXX&m=4
+COOL
+/set.cgi?pass=XXXXX&m=8
+FAN
+/set.cgi?pass=XXXXX&m=16
+COOL/AUTO
+/set.cgi?pass=XXXXX&m=9
+HEAT/AUTO
+/set.cgi?pass=XXXXX&m=3
+
+-- ON TIMER --
+
+MMM = Minutes. (eg. &mins=90 for 1.5 hours)
+
+/setontimer.cgi?pass=XXXXX&mins=MMM
+
+-- OFF TIMER --
+
+MMM = Minutes. (eg. &mins=30 for 30 minutes)
+
+/setofftimer.cgi?pass=XXXXX&mins=MMM
+
+-- ZONE CONTROL --
+
+ZZ = Zone Number. 1,2,3,4,5,6,7,8
+
+OFF
+/setzone.cgi?pass=XXXXX&z=ZZ&s=0
+ON
+/setzone.cgi?pass=XXXXX&z=ZZ&s=1
+
+-- GET ZONE NAMES --
+
+/zones.cgi?pass=XXXXX
+
+Returns HTML:
+
+--START
+eHTTP/1.0 200 OK
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Connection: close
+Content-type: text/plain
+
+nz=5&zone1=testing&zone2=ffffffff&zone3=Zone%203&zone4=Zone%204&zone5=Zone%205
+--END
+
+nz=5 <--- total number of zones configured in system
+
+-- SET ZONE NAMES --
+
+NAME, NAME2 etc are just text. Replace space with %20
+
+/zones.cgi?pass=XXXXX&zone1=NAME&zone2=NAME2&zone3=Bed%20Room&zone4=zone%204
+
+-- GET STATUS --
+/ac.cgi?pass=XXXXX
+
+This returns all the status data. The exact same thing is returned if you send any of the set.cgi commands. (ie, set.cgi is probably calling ac.cgi at the end...)
+
+Returns HTML:
+
+--START
+opmode=0&units=.&settemp=25.0&fanspeed=3&fanflags=1&acmode=9&tonact=0&toffact=0&prog=0&time=15:34&day=3&roomtemp=39&outsidetemp=34&louvre=0&zone=128&flt=0&test=0&errcode=&sensors=1
+--END
+
+opmode=0 <--- Power on/off
+units=. <--- ? units?
+settemp=25.0 <--- Temperature set point
+fanspeed=3 <--- Fan speed (1=low,2=med,3=high)
+fanflags=1 <--- Fan (1 = Manual, 3= Auto)
+acmode=9 <--- Mode ( 8 + 1 = Cool + Auto)
+tonact=0 <--- ? timeron?
+toffact=0 <--- ? timeroff?
+prog=0 <--- ?
+time=15:34 <--- Time
+day=3 <--- Current Day (0=Monday, 1=Tuesday, 2=Wednesday, ..)
+roomtemp=39 <--- Current Room Temp
+outsidetemp=34 <--- Current Outside Temp
+louvre=0 <--- ? I don't have a louvre!?
+zone=128 <--- Zones Enabled (Zone 1 = 128 Zone 2 = 64 Zone 3 = 32 Zone 4 = 16 Zone 5 = 8 Zone 6 = 4 Zone 7 = 2 Zone 8 = 1)
+flt=0 <--- Filter Clean (1=yes)
+test=0 <--- ? testmode?
+errcode= <--- ?
+sensors=1 <--- ?
