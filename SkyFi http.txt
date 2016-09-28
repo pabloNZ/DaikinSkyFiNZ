@@ -5,14 +5,14 @@ DAIKIN SKYFI UNIT
 http://<ipaddress>:2000/
 
 -- POWER OFF --
-http://10.111.111.28:2000/set.cgi?pass=XXXXX&p=0
+http://<ipaddress>:2000/set.cgi?pass=XXXXX&p=0
 
 -- POWER ON --
-http://10.111.111.28:2000/set.cgi?pass=XXXXX&p=1
+http://<ipaddress>:2000/set.cgi?pass=XXXXX&p=1
 
 -- SET TEMPERATURE --
 
-TT <--- Value for setpoint (range here seems to be 18 – 32)
+TT <--- Value for setpoint (range here seems to be 18 â€“ 32)
 
 /set.cgi?pass=XXXXX&t=TT
 
