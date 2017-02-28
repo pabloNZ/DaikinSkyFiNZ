@@ -1,0 +1,69 @@
+opmode=0 units=. settemp=21.0 fanspeed=3 fanflags=1 acmode=8 tonact=0 toffact=0 prog=0 time=02:59 day=2 roomtemp=20 outsidetemp=24 louvre=1 zone=0 flt=0 test=0 errcode= sensors=1
+
+rule "Fan Speed Change"
+when
+	Item heatingDaikinFanSp changed
+then
+
+end
+
+rule "Fan Mode Change"
+when
+	Item heatingDaikinFan changed
+then
+if (heatingDaikinFan.state==1)
+	executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=1")
+	else
+		if (heatingDaikinFan.state==2)
+	executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=2")
+	if (heatingDaikinFan.state==3)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=3")
+if (heatingDaikinFan.state==5)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=5")
+if (heatingDaikinFan.state==6)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=6")
+if (heatingDaikinFan.state==7)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&f=7")
+end
+
+rule "Heating Mode Change"
+when
+	Item heatingDaikinMode changed
+then
+	if (heatingDaikinMode.state==1)
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=1")
+		else
+			if (heatingDaikinMode.state==2)
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=2")
+		if (heatingDaikinMode.state==4)
+	executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=4")
+	if (heatingDaikinMode.state==8)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=8")
+if (heatingDaikinMode.state==16)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=16")
+if (heatingDaikinMode.state==9)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=9")
+if (heatingDaikinMode.state==3)
+executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&m=3")
+end
+
+rule "Daikin Temperature Change"
+when
+	Item heatingDaikinTemp changed
+then
+	if (heatingDaikinTemp.state==1)
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&t=1")
+	else
+		if (heatingDaikinTemp.state==2)
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&t=2")
+end
+
+rule "Daikin Power Change"
+when
+	Item heatingDaikinPower changed
+then
+	if (heatingDaikinSw.state==1)
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&p=1")
+	else
+		executeCommandLine("curl http://192.168.1.17:2000/set.cgi?pass=92136&p=0")
+end
