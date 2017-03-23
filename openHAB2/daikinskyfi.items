@@ -1,6 +1,16 @@
-Group gDaikin
+// daikin online controller
+String heatingDaikinPayload { channel="exec:command:heatingDaikin:output" }
+Switch heatingDaikinPayloadRun "Grab latest Daikin data" <play> { channel="exec:command:heatingDaikin:run" }
+Number heatingDaikinPayloadExit { channel="exec:command:heatingDaikin:exit" }
+DateTime heatingDaikinPayloadLastExecution "Last grabbed: [%1$tH:%1$tM]" <clock> { channel="exec:command:heatingDaikin:lastexecution" }
 
-String heatingDaikinFan 	"Fan mode" 		<fan> 	(gDaikin)
-String heatingDaikinMode 	"Mode" 				<mode> 	(gDaikin)
-String heatingDaikinTemp 	"Temperature" <temp> 	(gDaikin)
-Switch heatingDaikinPower "Power" 			<power> (gDaikin)
+Number heatingDaikinMode "Mode" <mode> (gHeating, gHeatpump)
+Number heatingDaikinTemp "Set Temp [%.1f °C]" <settemp> (gHeating, gHeatpump)
+Number heatingDaikinPower "Power [MAP(switch.map):%s]" <power> (gHeating, gHeatpump)
+Number heatingDaikinFan "Fan Mode" <fanmode> (gHeating, gHeatpump)
+Number heatingDaikinFanSp "Fan Speed" <fanspeed> (gHeating, gHeatpump)
+Switch heatingDaikinSw "Power [%s]" <power> (gHeating, gHeatpump, gPower)
+
+// daikin sensors
+Number heatingDaikinTempIn "Inside Temperature [%.1f °C]" <tempinside> (gSensorTemperature, gHeatpump, gTemperatureChart) //{ daikin="living:tempin" }
+Number heatingDaikinTempOut "Outside Temperature [%.1f °C]" <tempoutside> (gSensorTemperature, gHeatpump, gTemperatureChart) //{ daikin="living:tempout" }

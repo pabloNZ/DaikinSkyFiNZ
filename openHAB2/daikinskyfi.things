@@ -1,0 +1,1 @@
+Thing exec:command:heatingDaikin [command="/etc/openhab2/scripts/daikinskyfi.sh", interval=30, timeout=30, autorun=true]

@@ -1,0 +1,8 @@
+Frame label="Heatpump"{
+  Switch item=heatingDaikinSw
+  Selection item=heatingDaikinMode mappings=[1="Auto", 8="Cool", 4="Dry", 2="Heat", 16="Fan"]
+  Selection item=heatingDaikinFan mappings=[0="Auto", 1="Low", 2="Medium", 3="High"]
+  Setpoint item=heatingDaikinTemp minValue=16 maxValue=32 step=1
+  Text item=heatingDaikinTempIn
+  Text item=heatingDaikinTempOut
+}
