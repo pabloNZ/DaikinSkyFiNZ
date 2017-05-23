@@ -1,33 +1,25 @@
-#!/bin/bash
+#!/bin/sh
+value="$1"
 
-# Settings:
-# Daikin IP Address and Port
-	DIP=192.168.1.39:2000
-
-# Daikin SkyFi Password
-  DPass=xxxxx
-
-skyfiset="$DIP/set.cgi?pass=$DPass"
-
-if [ $1 = 18 ]
+if [ $value = "18" ]
 then
-  curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=18"
-elif [$1 = 19]
+  curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=18"
+elif [$value = "19"]
 then
-  curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=19"
-elif [$1 = 20]
+  curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=19"
+elif [$value = "20"]
 then
-  curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=20"
-elif [$1 = 21]
+  curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=20"
+elif [$value = "21"]
 then
-  curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=21"
-elif [$1 = 22]
+  curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=21"
+elif [$value = "22"]
 then
-	curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=22"
-elif [$1 = 23]
+	curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=22"
+elif [$value = "23"]
 then
-	curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=23"
-elif [$1 = 24]
+	curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=23"
+elif [$value = "24"]
 then
-	curl -S -H 'Content-Type: text/plain' -X POST "http://$skyfiset" -d "&t=24"
+	curl -X GET "http://192.168.1.39:2000/set.cgi?pass=92136&t=24"
 fi
