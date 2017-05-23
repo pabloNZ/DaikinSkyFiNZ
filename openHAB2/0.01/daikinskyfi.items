@@ -4,12 +4,12 @@ Switch heatingDaikinPayloadRun "Grab latest Daikin data" <play> { channel="exec:
 Number heatingDaikinPayloadExit { channel="exec:command:heatingDaikin:exit" }
 DateTime heatingDaikinPayloadLastExecution "Last grabbed: [%1$tH:%1$tM]" <clock> { channel="exec:command:heatingDaikin:lastexecution" }
 
-Number heatingDaikinMode "Mode" <mode> (gHeating, gHeatpump)
-Number heatingDaikinTemp "Set Temp [%.1f °C]" <settemp> (gHeating, gHeatpump)
+Number heatingDaikinMode  "Mode" <mode> (gHeating, gHeatpump)
+Number heatingDaikinTemp  "Set Temp [%.1f °C]" <settemp> (gHeating, gHeatpump)
 Number heatingDaikinPower "Power [MAP(switch.map):%s]" <power> (gHeating, gHeatpump)
-Number heatingDaikinFan "Fan Mode" <fanmode> (gHeating, gHeatpump)
+Number heatingDaikinFan   "Fan Mode" <fanmode> (gHeating, gHeatpump)
 Number heatingDaikinFanSp "Fan Speed" <fanspeed> (gHeating, gHeatpump)
-Switch heatingDaikinSw "Power [%s]" <power> (gHeating, gHeatpump, gPower)
+Switch heatingDaikinSw    "Power [%s]" <power> (gHeating, gHeatpump, gPower)
 
 // daikin sensors
 Number heatingDaikinTempIn "Inside Temperature [%.1f °C]" <tempinside> (gSensorTemperature, gHeatpump, gTemperatureChart) //{ daikin="living:tempin" }

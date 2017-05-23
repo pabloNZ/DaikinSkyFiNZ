@@ -1,0 +1,18 @@
+//Things
+Thing exec:command:daikinModeControl  [command="/etc/openhab2/scripts/daikinMode.sh %2$s", transform="REGEX((.*?))", interval=0, autorun=false]
+Thing exec:command:daikinPowerControl  [command="/etc/openhab2/scripts/daikinPower.sh %2$s", transform="REGEX((.*?))", interval=0, autorun=false]
+Thing exec:command:daikinFanSpeedControl  [command="/etc/openhab2/scripts/daikinFanSpeed.sh %2$s", transform="REGEX((.*?))", interval=0, autorun=false]
+Thing exec:command:daikinTempControl  [command="/etc/openhab2/scripts/daikinSetTemp.sh %2$s", transform="REGEX((.*?))", interval=0, autorun=false]
+
+//Items
+String daikinMode       { channel="exec:command:daikinModeControl:input", autoupdate="false" }
+String daikinPower      { channel="exec:command:daikinPowerControl:input", autoupdate="false" }
+String daikinFanSpeed   { channel="exec:command:daikinFanSpeedControl:input", autoupdate="false" }
+String daikinSetTemp    { channel="exec:command:daikinTempControl:input", autoupdate="false" }
+
+//Sitemap
+Selection   item=daikinMode      label="Mode"          <mode>        mappings=[1="Auto", 2="Heat", 3="Dry", 4="Cool", 8="Fan", 9="Cool/Auto", 16="Heat/Auto"]
+Switch      item=daikinPower     label="Power"         <power>       mappings=[1="On", 2="Off"]
+Selection   item=daikinFanSpeed  label="Fan Speed"     <fanspeed>    mappings=[1="Low", 2="Med", 3="High", 5="Low/Auto", 6="Med/Auto", 7="High/Auto"]
+Selection   item=daikinSetTemp   label="Temperature"   <temp>        mappings=[18="18", 19="19", 20="20", 21="21", 22="22", 23="23", 24="24"]
+Switch      item=daikinSetTemp   label="Temperature"   <temp>        mappings=[18="Cool", 21="Warm", 23="Hot"]
