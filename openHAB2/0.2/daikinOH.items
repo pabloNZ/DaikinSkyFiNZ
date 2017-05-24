@@ -1,8 +1,8 @@
 //Things
-Thing exec:command:daikinModeControl  [command="sudo /etc/openhab2/scripts/daikinMode.sh, %2$s"]
-Thing exec:command:daikinPowerControl  [command="sudo /etc/openhab2/scripts/daikinPower.sh, %2$s"]
-Thing exec:command:daikinFanSpeedControl  [command="sudo /etc/openhab2/scripts/daikinFanSpeed.sh, %2$s"]
-Thing exec:command:daikinTempControl  [command="sudo /etc/openhab2/scripts/daikinSetTemp.sh, %2$s"]
+Thing exec:command:daikinModeControl  [command="bash /etc/openhab2/scripts/daikinMode.sh %2$s"]
+Thing exec:command:daikinPowerControl  [command="bash /etc/openhab2/scripts/daikinPower.sh %2$s"]
+Thing exec:command:daikinFanSpeedControl  [command="bash /etc/openhab2/scripts/daikinFanSpeed.sh %2$s"]
+Thing exec:command:daikinTempControl  [command="bash /etc/openhab2/scripts/daikinSetTemp.sh %2$s"]
 
 //Items
 String daikinMode       { channel="exec:command:daikinModeControl:input", autoupdate="false" }
